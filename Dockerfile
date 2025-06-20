@@ -4,7 +4,7 @@ RUN apt-get update --fix-missing \
     && apt-get install -y --no-install-recommends --no-install-suggests \
         build-essential \
         pkg-config \
-    || (sleep 30 && apt-get update --fix-missing && apt-get install -y --no-install-recommends --no-install-suggests build-essential pkg-config) \
+    || (sleep 30 && apt-get update --fix-missing && apt-get install -y --no-install-recommends --no-install-suggests build-essential  pkg-config) \
     && pip install --no-cache-dir --upgrade pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
