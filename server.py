@@ -26,6 +26,7 @@ def login():
 
 @server.route('/upload', methods=['POST'])
 def upload():
+    print("Upload request received")
     access, err = validate.token(request)
 
     access = json.loads(access)
@@ -35,9 +36,10 @@ def upload():
             return "Only one file can be uploaded at a time", 400
         
         for _, f in request.files.items():
-            err = util.upload_file(f, fs, channel, access)
+            err = util.upload(f, fs, channel, access)
 
             if err:
+                print(err)
                 return err
             
         return "File uploaded successfully", 200
