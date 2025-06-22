@@ -4,7 +4,7 @@ def upload(f, fs, channel, access):
     try:
         fid = fs.put(f)
     except Exception as e:
-        return "internal server error", 500
+        return "internal server error at file upload", 500
     
     message = {
         "video_fid": str(fid),
@@ -23,4 +23,4 @@ def upload(f, fs, channel, access):
         )
     except:
         fs.delete(fid)
-        return "internal server error", 500
+        return "internal server error at message publish", 500
