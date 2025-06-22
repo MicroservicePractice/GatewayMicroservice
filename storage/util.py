@@ -6,13 +6,15 @@ def upload(f, fs, channel, access):
     except Exception as e:
         return f"internal server error at file upload \n {e}", 500
 
+    #print(access, flush=True)
     message = {
         "video_fid": str(fid),
         "mp3_fid": None,
-        "username": access['username'],
+        "username": access['sub'],
     }
 
     try:
+        print(message, flush=True)
         channel.basic_publish(
             exchange='',
             routing_key='video',
